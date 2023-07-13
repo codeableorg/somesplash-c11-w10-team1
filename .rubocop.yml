@@ -47,3 +47,5 @@ Metrics/BlockLength:
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*
+I18nLocaleTexts:
+  Enabled: false
