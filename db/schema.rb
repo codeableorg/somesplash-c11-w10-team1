@@ -14,12 +14,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_140923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "photos_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.string "commentable_type"
-    t.integer "commentable_id"
+    t.bigint "commentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "comments_count", default: 0
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_photos_on_category_id"
+    t.index ["title"], name: "index_photos_on_title", unique: true
+  end
+
+  add_foreign_key "photos", "categories"
 end
