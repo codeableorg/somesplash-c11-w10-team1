@@ -23,7 +23,7 @@
 }
 
 .photo-card__avatar {
-  max-width: 64px;
+  max-width: auto;
 }
 
 .photo-card__content {
