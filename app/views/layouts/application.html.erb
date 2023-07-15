@@ -13,9 +13,14 @@
       <div class="container">
         <div class="header navbar">
          <%= link_to image_tag("/images/logo2.png"), categories_path %>
-          <%= form_with url: "/search", method: :get do |f| %>
-            <%= f.button "Search", class: "button" %>
+          
+          <%= link_to "search", { url: "/search", method: :get }, class: "button" do %>
+                <%= form_with url: "/search", method: :get do |f| %>
+                <%= f.button "Search" %>
+                <% end %>
           <% end %>
+          
+
         </div>
       </div>
     </header>
