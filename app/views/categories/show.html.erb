@@ -9,7 +9,8 @@
 <div class="employee-card_details">
 <%= image_tag(photo.image.attached? ? photo.image : "/images/icon-gallery.jpg") %>
 <div class="employee-card__details">
-  <p class="heading--xs regular"><%= photo.title %></p>
+  
+  <%=link_to(photo.title, photo_path(photo), class: "links-name heading--sm regular")%>
   <span class="content-sm regular-gray"><%=photo.comments_count%> Coments</span>
   </div>
   </div>
