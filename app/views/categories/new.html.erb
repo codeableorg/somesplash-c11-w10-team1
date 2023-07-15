@@ -2,11 +2,13 @@
   <div class="container">
     <h1 class="heading mb-4">New Category</h1>
     <%if @categories.errors.any? %>
-      <h3>Something went wrong: </h3>
+      <h3 class= "color">Something went wrong: </h3>
       <div>
-        <% @categories.errors.full_messages.each do |error_message| %>
-          <ul><%= error_message %></ul>
-        <%end%>
+        <ul>
+          <% @categories.errors.full_messages.each do |error_message| %>
+            <li><%= error_message %></li>
+          <% end %>
+        </ul>
       </div>
     <%end %>
     <%=render "form", category: @categories%>

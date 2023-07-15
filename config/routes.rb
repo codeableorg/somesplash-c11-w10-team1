@@ -1,6 +1,12 @@
+# Rails.application.routes.draw do
+#   resources :categories
+#   resources :photos
+#   resources :comment
+# end
+
 Rails.application.routes.draw do
-  # root "articles#index"
-  resources :categories
+  resources :categories do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :photos
-  resources :comments
 end
