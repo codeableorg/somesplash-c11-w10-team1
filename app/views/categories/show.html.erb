@@ -2,8 +2,8 @@
   <div class="container">
     <h1 class="heading mb-4"><%=@categories.name%></h1>
     <p class="mb-4"><%=@categories.description%></p>
-    <%=link_to "New photo", new_photo_path(category_id: @categories.id), class: "button button--secondary mb-4"%>
-    <div class="flex flex-column gap-4">
+    <%=link_to "New photo", new_photo_path(category_id: @categories.id), class: "button_2 button--secondary mb-4"%>
+    <div class=" flex-column gap-4 mt-20">
       <%@photos.each do |photo|%>
         <div class="photo-card">
           <div class="photo-card__header">
@@ -14,8 +14,12 @@
             </div>
           </div>
           <div class="photo-card__footer">
-            <%=link_to "Edit", edit_photo_path(photo)%>
+            <%= link_to edit_photo_path(photo) do %>
+            <%= image_tag "/iconos/editar.svg", alt: "boton editar" %>
+            <% end %>
             <%=link_to "Destroy", photo_path(photo), data: { turbo_method: :delete, turbo_confirm: "Seguro de borrar la foto?"}%>
+    
+
           </div>
         </div>
       <%end%> 
