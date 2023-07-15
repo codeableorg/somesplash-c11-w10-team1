@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">Categories</h1>
+    <%= link_to("New Category", new_category_path, class: "button button--secondary button--sm fit-content mb-4")%>
+    <div>
+      <% @categories.each do |category| %>
+        <div class="card-list">
+          <div class="department-card">
+            <% if category.cover.attached? %>
+              <%= image_tag(category.cover, alt: "Category Image", class: "department-card__image")%>
+            <% end %>
+            <div class="department-card">
+              <%=link_to(category.name, category_path(category), class: "links-name heading--sm regular")%>
+              <%# <a href="/departments/<%=department.id>"><%=department.name></a> %>
+              <%# <a href="/departments/1">Engineering</a> %>
+              <span class="content-sm regular-gray"><%=category.photos_count%> photos</span>
+              <p class="content-base regular"><%= category.description %></p>
+              <div class = "links-content">
+                <%= link_to(image_tag("icons/edit.png"), edit_category_path(category)) %>
+                <%= link_to(image_tag("icons/Button.png"), category_path(category), data: { turbo_method: :delete, turbo_confirm: "¿Está seguro?" }) %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
