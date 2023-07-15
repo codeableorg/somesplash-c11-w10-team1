@@ -104,6 +104,10 @@
   padding: 0.5em;
   font-size: 1.5rem;
 }
+.btn-transparent {
+  background-color: transparent;
+  border: none;
+}
 
 /* Loading state */
 .button--loading .button__icon {

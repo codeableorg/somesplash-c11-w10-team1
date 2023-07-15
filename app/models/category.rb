@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   
     # Validations
     validates :name, presence: true, uniqueness: true
+    validates :cover, presence: true
     has_one_attached :cover
   end
   

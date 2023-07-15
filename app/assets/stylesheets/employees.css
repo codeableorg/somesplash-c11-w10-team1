@@ -1,8 +1,9 @@
 .employee-card {
   padding: 0.5em 1em;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
 }
 
 .employee-card__header {
@@ -20,6 +21,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 1em;
+  /* width: 68px; */
 }
 
 .employee-card__avatar {

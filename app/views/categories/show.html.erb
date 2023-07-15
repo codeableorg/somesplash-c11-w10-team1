@@ -1,26 +1,56 @@
 <section class="section">
   <div class="container">
-    <h1 class="heading mb-4"><%=@categories.name%></h1>
-    <p class="mb-4"><%=@categories.description%></p>
-    <h2 class="heading--sm mb-4">Photos</h2>
-    <%=link_to "New photo", new_photo_path(category_id: @categories.id), class: "button button--secondary mb-4"%>
+    <h1 class="heading--base regular mb-4"><%=@categories.name%></h1>
+    <p class="content-base regular mb-4"><%=@categories.description%></p>
+    <%= link_to "New photo", new_photo_path(category_id: @categories.id), class: "button button--secondary button--sm fit-content mb-4" %>
     <div class="flex flex-column gap-4">
-      <%@photos.each do |photo|%>
+      <% @photos.each do |photo| %>
         <div class="employee-card">
-          <div class="employee-card__header">
-            <%=image_tag photo.image.attached? ? photo.image : "/images/icon-gallery.jpg" %>
+          <div class="employee-card_details">
+            <%= image_tag(photo.image.attached? ? photo.image : "/images/icon-gallery.jpg") %>
             <div class="employee-card__details">
-              <p class="heading--xs"><%=photo.title%></p>
-              <p class="content-sm"><%=photo.description%></p>
+              <p class="heading--xs regular"><%= photo.title %></p>
+              <span class="content-sm regular-gray"><%=photo.comments_count%> Coments</span>
             </div>
           </div>
           <div class="employee-card__footer">
-            <%=link_to "Edit"%>
-            <%=link_to "Destroy"%>
+            <%= link_to(image_tag("icons/edit.png"), edit_category_path(@categories)) %>
+            <%= link_to(image_tag("icons/Button.png"), category_path(@categories), method: :delete, data: { confirm: 'Are you sure?' }) %>
           </div>
         </div>
-      <%end%>
+      <% end %>
     </div>
-    <%=link_to "Back to departments", categories_path%>
+    
+    <%= form_with(model: [@categories, Comment.new], url: category_comments_path(@categories), local: true, class: "flex flex-column gap-4 mb-4") do |form| %>
+      <div class="input">
+        
+        <div class="input__container mt-4">
+          <%= form.text_area :comment, class: "input__content place-heigth", placeholder: "Some respectful comment here."%>
+        </div>
+      </div>
+      <%= form.submit "Comment", class: "button button--secondary comment-button" %>
+      <%= form.label :comments, class: "heading--xs regular ml-1" %>
+    <% end %>
+
+<div class="section-sm">
+  <% @comments.each do |comment| %>
+    <div class="comment content-base regular">
+      <div class="comment-content">
+        <p><%= comment.comment %></p>
+        <p class="timestamp content-sm regular-gray"><%= "#{time_ago_in_words(comment.created_at)} ago" %></p>
+      </div>
+      <div class="links-content">
+        <%= button_to "/categories/#{comment.commentable_id}/comments/#{comment.id}",
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' },
+                      class: "btn-transparent " do %>
+          <%= image_tag("icons/Button.png", width: 42, height: 42) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
   </div>
 </section>

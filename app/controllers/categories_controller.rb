@@ -10,6 +10,10 @@ class CategoriesController < ApplicationController
   def show
     @categories = Category.find(params[:id])
     @photos = @categories.photos
+    # @comments = @categories.photos.map(&:comments).flatten
+    @comments = @categories.comments
+
+
   end
 
   def create
