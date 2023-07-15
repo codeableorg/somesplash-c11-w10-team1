@@ -1,0 +1,27 @@
+<%=form_with model: photo, class: "flex flex-column gap-4 mb-4" do |form|%>
+  <div class="input">
+    <%=form.label :title, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=form.text_field :title, class: "input__content"%>
+    </div>
+  </div>
+  <div class="input">
+    <%=form.label :description, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=form.text_area :description, class: "input__content"%>
+    </div>
+  </div>
+
+  <div class="select">
+    <%=form.label :category_id, class: "content-xs overline"%>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, { selected: category.id }, class: "select__input" %>
+  </div>
+  
+  <div>
+    <%=form.label :image, class: "content-xs overline"%>
+    <div>
+      <%=form.file_field :image, accept: "image/png, image/jpeg"%>
+    </div>
+  </div>
+  <%=form.submit class: "button button--secondary"%>
+<%end%>

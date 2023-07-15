@@ -1,0 +1,23 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4"><%=@category.name%></h1>
+    <p class="mb-4"><%=@department.description%></p>
+    <h2 class="heading--sm mb-4">Photos</h2>
+    <%=link_to "New photo", new_photo_path(category_id: @category.id), class: "button button--secondary mb-4"%>
+    <div class="flex flex-column gap-4">
+      <%@photos.each do |photo|%>
+        <div class="photo-card">
+          <div class="photo-card__header">
+            <%=image_tag photo.image.attached? ? photo.image : "/images/purple_lake.png", 
+                        class: "employee-card__avatar" %>
+          </div>
+          <div class="employee-card__footer">
+            <%=link_to "Edit", edit_employee_path(employee)%>
+            <%=link_to "Destroy", employee_path(employee), data: { turbo_method: :delete, turbo_confirm: "Seguro de borrar el empleado?"}%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <%=link_to "Back to departments", departments_path%>
+  </div>
+</section>
