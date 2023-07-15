@@ -1,2 +1,7 @@
-<h1>Photos#new!!!!!</h1>
-<p>Find me in app/views/photos/new.html.erb</p>
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">New photo</h1>
+    <%=render "form", photo: @photo, category: @category%>
+    <%=link_to "Back", category_path(@category), class: "button button--subtle"%>
+  </div>
+</section>

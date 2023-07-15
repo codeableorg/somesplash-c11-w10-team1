@@ -1,2 +1,28 @@
-<h1>TODAS LAS FOTOS</h1>
-<p>AQUI MOSTRAREMOS TODAS LAS FOTOS</p>
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4"><%=@category.name%></h1>
+    <p class="mb-4"><%=@category.description%></p>
+    <%= link_to("NEW PHOTO", new_photo_path, class: "button button--secondary button--sm fit-content mb-4")%>
+    <div>
+      <% @photos.each do |photo| %>
+        <div class="card-list">
+          <div class="photo-card">
+            <% if photo.image.attached? %>
+              <%= image_tag(photo.image, alt: "photo image", class: "photo-card__image")%>
+            <% end %>
+            <div class="photo-card__content">
+              <%=link_to(photo.title, photo_path(photo))%>
+              <%# <a href="/departments/<%=department.id>"><%=department.name></a> %>
+              <%# <a href="/departments/1">Engineering</a> %>
+              <%# <span><% =category.photos_count%>comments</span> %>
+            </div>
+            <div>
+              <%=link_to("Edit", edit_photo_path(photo))%>
+              <%=link_to("Destroy", photo_path(photo), data: { turbo_method: :delete, turbo_confirm: "Esta usted Seguro?"})%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

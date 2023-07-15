@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SomesplashC11W10Team1</title>
+    <title>Someplash-Team#1</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+    <header>
+      <div class="container">
+        <div class="header navbar">
+         <%= link_to image_tag("/images/logo1.png"), categories_path(id: @category.id) %>
+          <%= form_with url: "/search", method: :get do |f| %>
+            <%= f.button "Search", class: "button" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="footer footer__content">Build with ♥ by</footer>
   </body>
 </html>
