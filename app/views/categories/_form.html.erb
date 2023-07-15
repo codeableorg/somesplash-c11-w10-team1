@@ -1,0 +1,21 @@
+<%=form_with model: category, class: "flex flex-column gap-4 mb-4" do |form|%>
+  <div class="input">
+    <%=form.label :name, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=form.text_field :name, class: "input__content"%>
+    </div>
+  </div>
+  <div class="input">
+    <%=form.label :description, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=form.text_area :description, class: "input__content"%>
+    </div>
+  </div>
+  <div>
+    <%=form.label :cover, class: "content-xs overline"%>
+    <div>
+      <%=form.file_field :cover, accept: "image/png, image/jpeg"%>
+    </div>
+  </div>
+  <%=form.submit class: "button button--secondary"%>
+<%end%>

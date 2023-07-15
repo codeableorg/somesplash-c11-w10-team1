@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">New Category</h1>
+    <%if @categories.errors.any? %>
+      <h3>Something went wrong: </h3>
+      <div>
+        <% @categories.errors.full_messages.each do |error_message| %>
+          <ul><%= error_message %></ul>
+        <%end%>
+      </div>
+    <%end %>
+    <%=render "form", category: @categories%>
+    <%=link_to("Back", categories_path, class: "button button--subtle")%>
+  </div>
+</section>
