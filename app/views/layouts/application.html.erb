@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Someplash-Team#1</title>
+    <title>SomesplashTeam1</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,7 @@
     <header>
       <div class="container">
         <div class="header navbar">
-         <%= link_to image_tag("/images/logo1.png"), categories_path(id: @category.id) %>
+         <%= link_to image_tag("/images/logo2.png"), categories_path %>
           <%= form_with url: "/search", method: :get do |f| %>
             <%= f.button "Search", class: "button" %>
           <% end %>
@@ -20,6 +20,10 @@
       </div>
     </header>
     <%= yield %>
-    <footer class="footer footer__content">Build with ♥ by</footer>
+    <footer class="footer footer__content">
+      <div> Build with ♥ by
+      
+      </div>
+    </footer>
   </body>
 </html>

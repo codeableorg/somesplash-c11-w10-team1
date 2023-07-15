@@ -11,6 +11,11 @@
       <%=form.text_area :description, class: "input__content"%>
     </div>
   </div>
+
+  <div class="select">
+    <%=form.label :category_id, class: "content-xs overline"%>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, { selected: category.id }, class: "select__input" %>
+  </div>
   
   <div>
     <%=form.label :image, class: "content-xs overline"%>

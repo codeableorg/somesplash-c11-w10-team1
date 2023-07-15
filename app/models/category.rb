@@ -1,6 +1,10 @@
 class Category < ApplicationRecord
-    # belongs_to :commentable, polymorphic: true
-    has_many :comments, as: :commentable, dependent: :destroy
+    # Associations
+    has_many :comments, as: :commentable
     has_many :photos, dependent: :destroy
+  
+    # Validations
     validates :name, presence: true, uniqueness: true
-end
+    has_one_attached :cover
+  end
+  

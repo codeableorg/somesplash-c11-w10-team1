@@ -1,0 +1,26 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4"><%=@categories.name%></h1>
+    <p class="mb-4"><%=@categories.description%></p>
+    <h2 class="heading--sm mb-4">Photos</h2>
+    <%=link_to "New photo", new_photo_path(category_id: @categories.id), class: "button button--secondary mb-4"%>
+    <div class="flex flex-column gap-4">
+      <%@photos.each do |photo|%>
+        <div class="employee-card">
+          <div class="employee-card__header">
+            <%=image_tag photo.image.attached? ? photo.image : "/images/icon-gallery.jpg" %>
+            <div class="employee-card__details">
+              <p class="heading--xs"><%=photo.title%></p>
+              <p class="content-sm"><%=photo.description%></p>
+            </div>
+          </div>
+          <div class="employee-card__footer">
+            <%=link_to "Edit"%>
+            <%=link_to "Destroy"%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <%=link_to "Back to departments", categories_path%>
+  </div>
+</section>

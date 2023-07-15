@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import url("./global.css");
+@import url("./global.css");
 @import url("./components/button.css");
 @import url("./components/input.css");
 @import url("./components/header.css");
