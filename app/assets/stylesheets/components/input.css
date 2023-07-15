@@ -18,7 +18,7 @@
   border-radius: 0.375em;
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: .5em;
   background-color: white;
   width: 100%;
 }
@@ -38,6 +38,8 @@
   margin: 0;
   border: none;
   width: 100%;
+  /* height: 120px; */
+  resize: none;
 }
 
 .input__content:focus {
@@ -50,7 +52,7 @@
 
 .input__container:focus-within {
   box-shadow: var(--shadow-input-primary);
-  border: 1px solid var(--primary-300);
+  border: 1px solid var(--primary-200);
 }
 
 .input--error .input__container:focus-within {

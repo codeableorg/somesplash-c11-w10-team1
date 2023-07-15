@@ -20,3 +20,11 @@
 .department-card__image {
   width: 100%;
 }
+
+.card-int {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+}

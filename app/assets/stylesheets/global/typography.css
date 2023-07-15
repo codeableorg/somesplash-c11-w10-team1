@@ -48,6 +48,15 @@ body {
   line-height: 1.75rem;
 }
 
+.heading--base {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.content-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
 .content-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -73,4 +82,25 @@ body {
   line-height: 1rem;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
+}
+
+.regular {
+  color: var(--gray-400);
+  font-weight: bold;
+  /* font: inherit; */
+}
+
+.regular-gray{
+  color: var(--gray-300);
+  font-weight:normal;
+}
+
+.comment {
+  margin-bottom: 20px;
+  border-top: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.text-center {
+  text-align: center;
 }

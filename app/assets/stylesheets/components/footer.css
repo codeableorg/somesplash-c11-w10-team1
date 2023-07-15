@@ -10,3 +10,25 @@
   max-width: 760px;
   margin: auto;
 }
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  color: var(--secondary-500) ;
+}
+
+.icon {
+  width: 20px; /* Ajusta el tamaño del icono según tus necesidades */
+  margin-right: 5px;
+}
+
+.name {
+  font-size: 14px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
+
