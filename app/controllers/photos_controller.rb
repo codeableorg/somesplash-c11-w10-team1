@@ -4,6 +4,12 @@ class PhotosController < ApplicationController
     @photo = Photo.new
     @category = Category.find(params[:category_id])
   end
+  
+  def show
+    @photo = Photo.find(params[:id])
+    @category = @photo.category
+    @comments = @photo.comments
+  end
 
   def edit
     @photo = Photo.find(params[:id])

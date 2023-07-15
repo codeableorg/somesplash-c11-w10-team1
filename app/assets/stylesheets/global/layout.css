@@ -20,3 +20,16 @@
   max-width: 1280px;
   margin: auto;
 }
+
+.links-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.links-name {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+}
+

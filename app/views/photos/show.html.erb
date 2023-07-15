@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading--base regular mb-4"><%=@photo.title%></h1>
+    <p class="content-base regular mb-4"><%=@photo.description%></p>
+    <%= link_to "New photo", new_photo_path(photo_id: @photo.id), class: "button button--secondary button--sm fit-content mb-4" %>
+    <div>
+        <div class="employee-card">
+        <div class="employee-card_details">
+        <%= image_tag(@photo.image.attached? ? @photo.image : "/images/icon-gallery.jpg") %>
+        <div class="employee-card__details">
+            <p class="heading--xs regular"><%= @photo.title %></p>
+            <span class="content-sm regular-gray"><%=@photo.comments_count%> Coments</span>
+        </div>
+        </div>
+        <div class="employee-card__footer">
+            <%= link_to(image_tag("icons/edit.png"), edit_photo_path(@photo)) %>
+            <%= link_to(image_tag("icons/Button.png"), photo_path(@photo), method: :delete, data: { confirm: 'Are you sure?' }) %>
+    </div>
+</div>
+    </div>
+  </div>
+</section>

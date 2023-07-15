@@ -8,8 +8,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @categories = Category.find(params[:id])
-    @photos = @categories.photos
+    @category = Category.find(params[:id])
+    @photos = @category.photos
+    # @comments = @categories.photos.map(&:comments).flatten
+    @comments = @category.comments
   end
 
   def create
