@@ -1,4 +1,4 @@
-.department-card {
+.category-card {
   border-radius: 8px;
   background-color: white;
   box-shadow: var(--shadow-md);
@@ -10,13 +10,13 @@
   gap: 2em;
 }
 
-.department-card__content {
+.category-card__content {
   padding: 0.5em 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.department-card__image {
+.category-card__image {
   width: 100%;
 }
