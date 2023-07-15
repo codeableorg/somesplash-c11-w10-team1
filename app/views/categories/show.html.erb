@@ -2,25 +2,24 @@
   <div class="container">
     <h1 class="heading mb-4"><%=@categories.name%></h1>
     <p class="mb-4"><%=@categories.description%></p>
-    <h2 class="heading--sm mb-4">Photos</h2>
     <%=link_to "New photo", new_photo_path(category_id: @categories.id), class: "button button--secondary mb-4"%>
     <div class="flex flex-column gap-4">
       <%@photos.each do |photo|%>
-        <div class="employee-card">
-          <div class="employee-card__header">
-            <%=image_tag photo.image.attached? ? photo.image : "/images/icon-gallery.jpg" %>
-            <div class="employee-card__details">
+        <div class="photo-card">
+          <div class="photo-card__header">
+            <%=image_tag photo.image.attached? ? photo.image : "/images/icon-gallery.jpg", class: "photo-card__avatar" %>
+            <div class="photo-card__details">
               <p class="heading--xs"><%=photo.title%></p>
               <p class="content-sm"><%=photo.description%></p>
             </div>
           </div>
-          <div class="employee-card__footer">
-            <%=link_to "Edit"%>
-            <%=link_to "Destroy"%>
+          <div class="photo-card__footer">
+            <%=link_to "Edit", edit_photo_path(photo)%>
+            <%=link_to "Destroy", photo_path(photo), data: { turbo_method: :delete, turbo_confirm: "Seguro de borrar la foto?"}%>
           </div>
         </div>
-      <%end%>
+      <%end%> 
     </div>
-    <%=link_to "Back to departments", categories_path%>
+    <%=link_to "Back to categories", categories_path%>
   </div>
 </section>

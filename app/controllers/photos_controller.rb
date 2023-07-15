@@ -1,13 +1,5 @@
 class PhotosController < ApplicationController
-  def index
-    @photos = Photo.all.order(name: :asc)
-  end
-
-  def show
-    @category = Category.find(params[:id])
-    @photos = @category.photos
-    
-  end
+  
   def new
     @photo = Photo.new
     @category = Category.find(params[:category_id])
@@ -26,12 +18,28 @@ class PhotosController < ApplicationController
       render "new", status: :unprocessable_entity
     end
   end
-  
+
+  def update
+    @photo = Photo.find(params[:id])
+    if @photo.update(photo_params)
+      redirect_to category_path(@photo.category)
+    else
+      render "edit", status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    
+    redirect_to category_path(@photo.category), status: :see_other
+  end
+
   # /search?query=alva
-  # def search
-  #   query = params[:query]
-  #   @photos = Photo.where(" LOWER(name) LIKE ?","%#{query.downcase}%")
-  # end
+  def search
+    @query = params[:query]
+    @photos = Photo.where(" LOWER(name) LIKE ?","%#{query.downcase}%")
+  end
   
   private
   def photo_params
