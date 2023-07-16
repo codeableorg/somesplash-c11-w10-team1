@@ -1,10 +1,10 @@
 <section class="section">
   <div class="container">
-    <h1 class="heading mb-4">Categories</h1>
+    <h1 class="heading mb-4 ">Categories</h1>
     <%= link_to("New Category", new_category_path, class: "button button--secondary button--sm fit-content mb-4")%>
     <div>
       <% @categories.each do |category| %>
-        <div class="card-list">
+        <div class="card-list mt-4">
           <div class="department-card">
             <% if category.cover.attached? %>
               <%= image_tag(category.cover, alt: "Category Image", class: "department-card__image")%>

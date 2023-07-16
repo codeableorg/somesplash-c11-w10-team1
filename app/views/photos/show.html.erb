@@ -8,16 +8,21 @@
         <%= image_tag(@photo.image.attached? ? @photo.image : "/images/icon-gallery.jpg") %>
         </div>
         </div>
+        
   </div>
   <%= form_with(model: [@photo, Comment.new], url: photo_comments_path(@photo), local: true, class: "flex flex-column gap-4 mb-4") do |form| %>
   <div class="input">
+  
     <div class="input__container mt-4">
       <%= form.text_area :comment, class: "input__content place-heigth", placeholder: "Some respectful comment here." %>
     </div>
   </div>
   <%= form.submit "Comment", class: "button button--secondary comment-button" %>
+  <%=link_to "Back", category_path(@category), class: "button button--subtle"%>
   <%= form.label :comment, class: "heading--xs regular ml-1" %>
+  
 <% end %>
+
 
 <% @photo.comments.each do |comment| %>
   <div class="comment">
