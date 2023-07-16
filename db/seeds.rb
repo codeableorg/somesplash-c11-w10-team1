@@ -12,6 +12,8 @@ people = Category.create(name: "People",
   description: "This is a category People")
 people.cover.attach(io: File.open("db/images/people.png"), filename: "people")
 
+
+
 lake = Photo.create(title: "Purple Lake", 
                     description: "Nice and big purple lake",
                     category: nature)

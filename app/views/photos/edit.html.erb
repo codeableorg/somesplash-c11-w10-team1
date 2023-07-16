@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">Edit Photo</h1>
+    <%if @photo.errors.any? %>
+      <h2>Errors: </h2>
+      <ul>
+        <% @photo.errors.full_messages.each do |error_message| %>
+          <li><%= error_message %></li>
+        <%end%>
+      </ul>
+    <%end %>
+    <%=render "form", photo: @photo, category: @category%>
+    <%=link_to("Back", category_path(@category), class: "button button--subtle")%>
+  </div>
+</section>

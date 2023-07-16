@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">Search</h1>
+    <%= form_tag search_result_path, method: :get, class: "search-form" do %>
+        <%= text_field_tag :query, nil, placeholder: "Search term",class: "button input mb-4 "%>
+        <%= submit_tag "Search", class: "button input mb-4 button--secondary " %>
+    <% end %>
+    <% if @photos.any? %>
+      <div>
+      <p>Total results: <%= @photos.count %></p>
+        <% @photos.each do |photo| %>
+        <div class="employee-card">
+        <div class="employee-card_details">
+        <%= image_tag(photo.image.attached? ? photo.image : "/images/icon-gallery.jpg") %>
+            <div class="employee-card__details">
+  
+            <%=link_to(photo.title, photo_path(photo), class: "links-name heading--sm regular")%>
+                <span class="content-sm regular-gray"><%=photo.comments_count%> Coments</span>
+                </div>
+                </div>
+                <div class="employee-card__footer">
+            <%= link_to(image_tag("icons/edit.png"), edit_photo_path(photo)) %>
+            <%= link_to(image_tag("icons/Button.png"), photo_path(photo), data: { turbo_method: :delete,turbo_confirm: 'Are you sure?' }) %>
+    </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No results found.</p>
+    <% end %>
+  </div>
+</section>

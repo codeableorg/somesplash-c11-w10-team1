@@ -1,27 +1,27 @@
 <section class="section">
   <div class="container">
-    <h1 class="heading--base regular mb-4"><%=@categories.name%></h1>
-    <p class="content-base regular mb-4"><%=@categories.description%></p>
-    <%= link_to "New photo", new_photo_path(category_id: @categories.id), class: "button button--secondary button--sm fit-content mb-4" %>
-    <div class="flex flex-column gap-4">
-      <% @photos.each do |photo| %>
-        <div class="employee-card">
-          <div class="employee-card_details">
-            <%= image_tag(photo.image.attached? ? photo.image : "/images/icon-gallery.jpg") %>
-            <div class="employee-card__details">
-              <p class="heading--xs regular"><%= photo.title %></p>
-              <span class="content-sm regular-gray"><%=photo.comments_count%> Coments</span>
-            </div>
-          </div>
-          <div class="employee-card__footer">
-            <%= link_to(image_tag("icons/edit.png"), edit_category_path(@categories)) %>
-            <%= link_to(image_tag("icons/Button.png"), category_path(@categories), method: :delete, data: { confirm: 'Are you sure?' }) %>
-          </div>
-        </div>
-      <% end %>
+<h1 class="heading--base regular mb-4"><%=@category.name%></h1>
+<p class="content-base regular mb-4"><%=@category.description%></p>
+<%= link_to "New photo", new_photo_path(category_id: @category.id), class: "button button--secondary button--sm fit-content mb-4" %>
+<div class="flex flex-column gap-4">
+<% @photos.each do |photo| %>
+<div class="employee-card">
+<div class="employee-card_details">
+<%= image_tag(photo.image.attached? ? photo.image : "/images/icon-gallery.jpg") %>
+<div class="employee-card__details">
+  
+  <%=link_to(photo.title, photo_path(photo), class: "links-name heading--sm regular")%>
+  <span class="content-sm regular-gray"><%=photo.comments_count%> Coments</span>
+  </div>
+  </div>
+    <div class="employee-card__footer">
+            <%= link_to(image_tag("icons/edit.png"), edit_photo_path(photo)) %>
+            <%= link_to(image_tag("icons/Button.png"), photo_path(photo), data: { turbo_method: :delete,turbo_confirm: 'Are you sure?' }) %>
     </div>
-    
-    <%= form_with(model: [@categories, Comment.new], url: category_comments_path(@categories), local: true, class: "flex flex-column gap-4 mb-4") do |form| %>
+</div>
+  <% end %>
+    </div>
+<%= form_with(model: [@category, Comment.new], url: category_comments_path(@category), local: true, class: "flex flex-column gap-4 mb-4") do |form| %>
       <div class="input">
         
         <div class="input__container mt-4">
@@ -40,17 +40,16 @@
         <p class="timestamp content-sm regular-gray"><%= "#{time_ago_in_words(comment.created_at)} ago" %></p>
       </div>
       <div class="links-content">
-        <%= button_to "/categories/#{comment.commentable_id}/comments/#{comment.id}",
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' },
-                      class: "btn-transparent " do %>
-          <%= image_tag("icons/Button.png", width: 42, height: 42) %>
-        <% end %>
+        
+
+          <%= link_to category_comment_path(comment.commentable_id, comment.id),
+            data: { turbo_method: :delete,turbo_confirm: 'Are you sure?' },
+            class: "btn-transparent" do %>
+          <%= image_tag("icons/Button.png",style: "width: 30px; height: 30px;") %>
+         <% end %>
       </div>
     </div>
   <% end %>
 </div>
-
-
-  </div>
+</div>
 </section>

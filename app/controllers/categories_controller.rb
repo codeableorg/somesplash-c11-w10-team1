@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.order(name: :asc)
   end
 
   def new
@@ -8,12 +8,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @categories = Category.find(params[:id])
-    @photos = @categories.photos
+    @category = Category.find(params[:id])
+    @photos = @category.photos
     # @comments = @categories.photos.map(&:comments).flatten
-    @comments = @categories.comments
-
-
+    @comments = @category.comments
   end
 
   def create

@@ -1,0 +1,10 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4 ">Search</h1>
+    <%= form_tag search_result_path, method: :get, class: "search-form" do %>
+        <%= text_field_tag :query, nil, placeholder: "Search term",class: "button input mb-4 text-normal"%>
+        <%= submit_tag "Search", class: "button input mb-4 button--secondary " %>
+    <% end %>
+    <%=link_to("Back", categories_path(@category), class: "button button--subtle")%>
+  </div>
+</section>

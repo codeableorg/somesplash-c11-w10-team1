@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading--base regular mb-4"><%=@photo.title%></h1>
+    <p class="content-base regular mb-4"><%=@photo.description%></p>
+    <div>
+        <div class="employee-card">
+        <div class="employee-card_details">
+        <%= image_tag(@photo.image.attached? ? @photo.image : "/images/icon-gallery.jpg") %>
+        </div>
+        </div>
+        
+  </div>
+  <%= form_with(model: [@photo, Comment.new], url: photo_comments_path(@photo), local: true, class: "flex flex-column gap-4 mb-4") do |form| %>
+  <div class="input">
+  
+    <div class="input__container mt-4">
+      <%= form.text_area :comment, class: "input__content place-heigth", placeholder: "Some respectful comment here." %>
+    </div>
+  </div>
+  <%= form.submit "Comment", class: "button button--secondary comment-button" %>
+  <%=link_to "Back", category_path(@category), class: "button button--subtle"%>
+  <%= form.label :comment, class: "heading--xs regular ml-1" %>
+  
+<% end %>
+
+
+<% @photo.comments.each do |comment| %>
+  <div class="comment">
+    <p><%= comment.comment %></p>
+    <p class="timestamp content-sm regular-gray"><%= "#{time_ago_in_words(comment.created_at)} ago" %></p>
+  </div>
+  <div class="links-content">
+        
+          <%= link_to photo_comment_path(comment.commentable_id, comment),
+              data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+              class: "btn-transparent" do %>
+          <%= image_tag("icons/Button.png",style: "width: 30px; height: 30px;") %>
+          <% end %>
+      </div>
+<% end %>
+  </div>
+
+</section>

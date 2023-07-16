@@ -16,6 +16,10 @@
   margin-bottom: 2rem;
 }
 
+.mt-20 {
+  margin-top: 20px;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -65,4 +69,8 @@
 
 .color{
   color: var(--error-400);
+}
+
+.text-normal{
+  text-transform: none;
 }
