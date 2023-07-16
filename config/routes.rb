@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :comments
-  get "/search", to: "photos#search", as: 'search'
-  get '/search_results', to: 'photos#search_results', as: 'search_results'
+  
+  get '/search', to: 'search#search'
+  get '/search/result', to: 'search#result'
 end
