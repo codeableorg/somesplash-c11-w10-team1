@@ -20,3 +20,43 @@
 .category-card__image {
   width: 100%;
 }
+
+.department-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.links-name {
+  color: #333;
+  text-decoration: none;
+}
+
+.content-sm {
+  color: #888;
+  font-size: 14px;
+}
+
+.content-base {
+  color: #555;
+  font-size: 16px;
+}
+
+.links-content {
+  margin-top: 10px;
+}
+
+.links-content a {
+  margin-right: 10px;
+}
+
+.links-content a img {
+  width: 20px;
+  height: 20px;
+}
+
+.links-content a:hover img {
+  opacity: 0.7;
+}
+

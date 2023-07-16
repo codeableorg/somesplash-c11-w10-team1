@@ -34,7 +34,7 @@
           <%= link_to photo_comment_path(comment.commentable_id, comment),
               data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' },
               class: "btn-transparent" do %>
-          <%= image_tag("icons/Button.png") %>
+          <%= image_tag("icons/Button.png",style: "width: 30px; height: 30px;") %>
           <% end %>
       </div>
 <% end %>
